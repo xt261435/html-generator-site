@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML生成器</h1>
+    <div class="input-group">
+        <label for="password">设置访问密码：</label>
+        <input type="text" id="password" placeholder="设置密码">
+    </div>
+    <div class="input-group">
+        <label for="link1">密码获取教程网址：</label>
+        <input type="text" id="link1" placeholder="设置跳转链接1">
+    </div>
+    <div class="input-group">
+        <label for="link2">小程序码图片链接：</label>
+        <input type="text" id="link2" placeholder="设置跳转链接2">
+    </div>
+    <div class="input-group">
+        <label for="link3">要加密的链接：</label>
+        <input type="text" id="link3" placeholder="设置跳转链接3">
+    </div>
+    <button id="generateBtn">生成HTML</button>
+    <div id="result"></div>
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const password = document.getElementById('password').value;
+            const link1 = document.getElementById('link1').value;
+            const link2 = document.getElementById('link2').value;
+            const link3 = document.getElementById('link3').value;
+
+            const htmlTemplate = `
+            <!DOCTYPE html>
+            <html lang="zh-CN">
+            <head>
+                <meta charset="UTF-8">
+                <title>网页标题</title>
+                <style>
+                    body {
+                        background-color: #ffffff;
+                        font-family: "Microsoft Yahei", 微软雅黑, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+                        line-height: 1.5715;
+                        font-size: 1.12em;
+                        letter-spacing: 1px;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .card-box {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 100%;
+                        display: block;
+                    }
+                    .card {
+                        background-color: white;
+                        width: 85%;
+                        height: 600px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        text-align: center;
+                        box-shadow: 0 2px 8px -2px rgb(0 0 0 / 5%), 0 1px 4px -1px rgb(25 15 15 / 7%), 0 0 1px 0 rgb(0 0 0 / 8%);
+                    }
+                    #title {
+                        color: #FF0000;
+                        font-weight: 500;
+                        line-height: 44.3123px;
+                        height: 44.3123px;
+                    }
+                    button {
+                        width: 70%;
+                        background: #07C160;
+                        font-size: 18px;
+                        height: 48px;
+                        padding: 2px 15px 6px 15px;
+                        border-radius: 5px;
+                        outline: none;
+                        display: inline-block;
+                        font-weight: bold;
+                        white-space: nowrap;
+                        text-align: center;
+                        box-shadow: 0.5px 0.5px 4px #999999;
+                        border: 1px solid transparent;
+                        cursor: pointer;
+                        transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+                        line-height: 1.5714285714285714;
+                        color: #fff;
+                        letter-spacing: 2px;
+                        margin-top: 20px;
+                    }
+                    button:nth-of-type(2) {
+                        background: #f4f5f7;
+                        color: #07C160;
+                    }
+                    button:nth-of-type(3) {
+                        background: #fdc308;
+                        color: darkslategrey;
+                    }
+                    .confirm-button {
+                        width: 33.33%;
+                        background: #07C160;
+                        font-size: 18px;
+                        height: 48px;
+                        padding: 2px 15px 6px 15px;
+                        border-radius: 5px;
+                        outline: none;
+                        display: block;
+                        font-weight: bold;
+                        white-space: nowrap;
+                        text-align: center;
+                        box-shadow: 0.5px 0.5px 4px #999999;
+                        border: 1px solid transparent;
+                        cursor: pointer;
+                        transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+                        line-height: 1.5714285714285714;
+                        color: #fff;
+                        letter-spacing: 2px;
+                        margin: 20px auto;
+                    }
+                    input {
+                        width: 75%;
+                        padding: 4px 11px;
+                        font-size: 18px;
+                        line-height: 1.97;
+                        background-color: #f7f7f7;
+                        border: 1px solid #d9d9d9;
+                        border-radius: 2px;
+                        transition: all 0.2s;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    input:focus,
+                    input:hover {
+                        border-color: #4096ff;
+                        box-shadow: 0 0 0 2px rgb(5, 145, 255 / 10%);
+                        outline: 0;
+                    }
+                    ::placeholder {
+                        color: darkgray;
+                    }
+                    .message-box {
+                        background-color: #fef0f0 !important;
+                        width: 200px;
+                        text-align: center;
+                        margin-top: 5px;
+                        border: 1px solid #fde2e2;
+                        padding: 10px 10px 14px 10px;
+                        font-size: 16px;
+                        border-radius: 5px;
+                        color: #f56c6c;
+                    }
+                    .input-container {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .input-container img {
+                        width: 40px;
+                        height: 35px;
+                        margin-left: 10px;
+                        vertical-align: middle;
+                    }
+                    /* 添加GIF玩偶样式 */
+                    .gif-doll {
+                        position: fixed;
+                        bottom: 10px;
+                        right: 10px;
+                        width: 150px
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="card-box">
+                    <div class="card">
+                        <img src="https://img1.imgtp.com/2023/10/10/Cu9srPMD.gif" style="width: 100px; height: 100px;" alt="">
+                        <div id="title">输入密码</div>
+                        <div class="input-container" style="margin-top: 20px;">
+                            <input type="text" id="passwordInput" maxlength="10" placeholder="输入密码即可进入">
+                            <img src="https://img1.imgtp.com/2023/10/10/l2D8RRNI.gif" alt="">
+                        </div>
+                        <button class="confirm-button" onclick="checkPassword()">确定</button>
+                        <div id="msg" style="position: absolute; left: 50%; transform: translateX(-50%); background-color: transparent;"></div>
+                        <div class="center" style="margin-top: 30px;">
+                            <button onclick="window.location.href='${link1}'">点击获取密码</button>
+                            <button onclick="window.location.href='${link2}'">获取密码教程</button>
+                            <button onclick="window.location.href='${link3}'">其他问题/联系客服</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加GIF玩偶 -->
+                <img src="https://example.com/path-to-your-gif.gif" class="gif-doll" alt="GIF玩偶">
+                <script>
+                    function checkPassword() {
+                        var input = document.getElementById('passwordInput').value;
+                        var correctPassword = '${password}'; // 设置正确密码
+                        if (input === correctPassword) {
+                            window.location.href = '${link1}'; // 输入正确密码后的跳转链接
+                        } else {
+                            var msgDiv = document.getElementById('msg');
+                            msgDiv.innerHTML = '<div class="message-box">密码错误</div>';
+                        }
+                    }
+
+                    document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            checkPassword();
+                        }
+                    });
+                </script>
+            </body>
+            </html>
+            `;
+
+            const blob = new Blob([htmlTemplate], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'generated_page.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+</body>
+</html>
